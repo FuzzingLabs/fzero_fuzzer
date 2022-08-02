@@ -221,8 +221,8 @@ use std::time::Instant;
 
 pub fn main() {{
     let mut fuzzer = Fuzzer {{
-        pub seed:  Cell::new(0x34cc028e11b4f89c),
-        pub buf:   Vec::new(),
+        seed:  Cell::new(0x34cc028e11b4f89c),
+        buf:   Vec::new(),
     }};
     
     let mut generated = 0usize;
@@ -243,8 +243,8 @@ pub fn main() {{
 }}
 
 pub struct Fuzzer {{
-    seed:  Cell<usize>,
-    buf:   Vec<u8>,
+    pub seed:  Cell<usize>,
+    pub buf:   Vec<u8>,
 }}
 
 impl Fuzzer {{
