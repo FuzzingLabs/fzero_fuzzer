@@ -219,7 +219,7 @@ impl GrammarRust {
 use std::cell::Cell;
 use std::time::Instant;
 
-fn main() {{
+pub fn main() {{
     let mut fuzzer = Fuzzer {{
         seed:  Cell::new(0x34cc028e11b4f89c),
         buf:   Vec::new(),
@@ -242,7 +242,7 @@ fn main() {{
     }}
 }}
 
-struct Fuzzer {{
+pub struct Fuzzer {{
     seed:  Cell<usize>,
     buf:   Vec<u8>,
 }}
@@ -261,7 +261,7 @@ impl Fuzzer {{
         // Go through each fragment in the list of fragments
         for (id, fragment) in self.fragments.iter().enumerate() {
             // Create a new function for this fragment
-            program += &format!("    fn fragment_{}(&mut self, depth: usize) {{\n", id);
+            program += &format!("    pub fn fragment_{}(&mut self, depth: usize) {{\n", id);
 
             // Add depth checking to terminate on depth exhaustion
             program += &format!("        if depth >= {} {{ return; }}\n",
