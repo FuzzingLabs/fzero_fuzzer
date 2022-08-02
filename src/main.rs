@@ -221,8 +221,8 @@ use std::time::Instant;
 
 pub fn main() {{
     let mut fuzzer = Fuzzer {{
-        seed:  Cell::new(0x34cc028e11b4f89c),
-        buf:   Vec::new(),
+        pub seed:  Cell::new(0x34cc028e11b4f89c),
+        pub buf:   Vec::new(),
     }};
     
     let mut generated = 0usize;
@@ -248,7 +248,7 @@ pub struct Fuzzer {{
 }}
 
 impl Fuzzer {{
-    fn rand(&self) -> usize {{
+    pub fn rand(&self) -> usize {{
         let mut seed = self.seed.get();
         seed ^= seed << 13;
         seed ^= seed >> 17;
